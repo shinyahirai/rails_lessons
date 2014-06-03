@@ -1,0 +1,7 @@
+<h1>Projects</h1>
+
+<ul>
+	<% @projects.each do |project| %> <!-- rubyの繰り返し処理each @projectsの中身は配列 -->
+	<li><%= project.title %></li>
+	<% end %>
+</ul>
