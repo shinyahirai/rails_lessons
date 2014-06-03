@@ -14,13 +14,16 @@ class ProjectsController < ApplicationController
 
 	def create
 		@project = Project.new(project_params)
-		@project.save
-		redirect_to projects_path
+		if @project.save  # このsaveの部分、保存をするときにvalidationが発動する
+			redirect_to projects_path
+		else
+			render 'new'
+		end
 	end
 
 	private
 
-		def project_params
+		def project_params # ここで一度フィルタリングして上に渡す
 			params[:project].permit(:title)
 		end
 
